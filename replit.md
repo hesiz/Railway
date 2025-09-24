@@ -9,6 +9,7 @@ This is a complete FastAPI server project that integrates with Ollama to provide
 - Automatic API documentation at /docs
 - Docker containerization ready
 - All dependencies properly installed
+- **Railway/Heroku/Render deployment ready** with dynamic port support
 
 # User Preferences
 
