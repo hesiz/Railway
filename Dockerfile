@@ -21,8 +21,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 
-# Copy only necessary files
-COPY requirements.txt main.py ./
+# Copy necessary files
+COPY requirements.txt main.py start.sh ./
+
+# Make startup script executable
+RUN chmod +x start.sh
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -32,10 +35,10 @@ EXPOSE $PORT
 
 # Health check
 HEALTHCHECK --interval=60s --timeout=30s --start-period=120s --retries=3 \
-    CMD curl -f http://localhost:$PORT/health || exit 1
+    CMD curl -f http://localhost:${PORT:-5000}/health || exit 1
 
-# Use shell form to allow environment variable expansion
-CMD uvicorn main:app --host 0.0.0.0 --port $PORT
+# Use startup script
+CMD ["./start.sh"]
 
 # Labels
 LABEL maintainer="Railway Deployment" \
