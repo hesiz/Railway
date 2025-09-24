@@ -113,9 +113,6 @@ LABEL maintainer="Replit Agent" \
       description="FastAPI server with Ollama and TinyLlama model" \
       version="1.0.0"
 
-# Volume for persistent data (optional)
-VOLUME ["/root/.ollama"]
-
 # Instructions for building and running:
 # ====================================
 # 
