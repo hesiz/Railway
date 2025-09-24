@@ -1,0 +1,65 @@
+2025-09-24T15:17:29.000000000Z [inf]  Starting Container
+2025-09-24T15:17:30.537358183Z [err]  Traceback (most recent call last):
+2025-09-24T15:17:30.537364780Z [err]    File "/usr/local/bin/hypercorn", line 8, in <module>
+2025-09-24T15:17:30.537368845Z [err]      sys.exit(main())
+2025-09-24T15:17:30.537372969Z [err]               ^^^^^^
+2025-09-24T15:17:30.537377078Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/__main__.py", line 304, in main
+2025-09-24T15:17:30.537381029Z [err]      return run(config)
+2025-09-24T15:17:30.537384680Z [err]             ^^^^^^^^^^^
+2025-09-24T15:17:30.537388344Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/run.py", line 39, in run
+2025-09-24T15:17:30.537392119Z [err]      sockets = config.create_sockets()
+2025-09-24T15:17:30.537396047Z [err]                ^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:30.537399907Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 206, in create_sockets
+2025-09-24T15:17:30.537403640Z [err]      insecure_sockets = self._create_sockets(self.bind)
+2025-09-24T15:17:30.537407546Z [err]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:30.537411551Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 273, in _create_sockets
+2025-09-24T15:17:30.537415132Z [err]      sock.bind(binding)
+2025-09-24T15:17:30.537419117Z [err]  socket.gaierror: [Errno -2] Name or service not known
+2025-09-24T15:17:31.451953616Z [err]  Traceback (most recent call last):
+2025-09-24T15:17:31.451957502Z [err]    File "/usr/local/bin/hypercorn", line 8, in <module>
+2025-09-24T15:17:31.451961305Z [err]      sys.exit(main())
+2025-09-24T15:17:31.451965003Z [err]               ^^^^^^
+2025-09-24T15:17:31.451968754Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/__main__.py", line 304, in main
+2025-09-24T15:17:31.451972774Z [err]      return run(config)
+2025-09-24T15:17:31.451976369Z [err]             ^^^^^^^^^^^
+2025-09-24T15:17:31.451980090Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/run.py", line 39, in run
+2025-09-24T15:17:31.451989978Z [err]      sockets = config.create_sockets()
+2025-09-24T15:17:31.451993712Z [err]                ^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:31.451997600Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 206, in create_sockets
+2025-09-24T15:17:31.452001346Z [err]      insecure_sockets = self._create_sockets(self.bind)
+2025-09-24T15:17:31.452005035Z [err]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:31.452009036Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 273, in _create_sockets
+2025-09-24T15:17:31.452012543Z [err]      sock.bind(binding)
+2025-09-24T15:17:31.452016870Z [err]  socket.gaierror: [Errno -2] Name or service not known
+2025-09-24T15:17:32.651468293Z [err]  Traceback (most recent call last):
+2025-09-24T15:17:32.651475768Z [err]    File "/usr/local/bin/hypercorn", line 8, in <module>
+2025-09-24T15:17:32.651483664Z [err]      sys.exit(main())
+2025-09-24T15:17:32.651489749Z [err]               ^^^^^^
+2025-09-24T15:17:32.651494640Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/__main__.py", line 304, in main
+2025-09-24T15:17:32.651515428Z [err]      return run(config)
+2025-09-24T15:17:32.651521830Z [err]             ^^^^^^^^^^^
+2025-09-24T15:17:32.651527594Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/run.py", line 39, in run
+2025-09-24T15:17:32.651532774Z [err]      sockets = config.create_sockets()
+2025-09-24T15:17:32.651537916Z [err]                ^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:32.651543994Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 206, in create_sockets
+2025-09-24T15:17:32.651550201Z [err]      insecure_sockets = self._create_sockets(self.bind)
+2025-09-24T15:17:32.651556222Z [err]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:32.651560434Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 273, in _create_sockets
+2025-09-24T15:17:32.651564226Z [err]      sock.bind(binding)
+2025-09-24T15:17:32.651568161Z [err]  socket.gaierror: [Errno -2] Name or service not known
+2025-09-24T15:17:33.851436885Z [err]  Traceback (most recent call last):
+2025-09-24T15:17:33.851445553Z [err]    File "/usr/local/bin/hypercorn", line 8, in <module>
+2025-09-24T15:17:33.851452146Z [err]      sys.exit(main())
+2025-09-24T15:17:33.851457282Z [err]               ^^^^^^
+2025-09-24T15:17:33.851463681Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/__main__.py", line 304, in main
+2025-09-24T15:17:33.851469534Z [err]      return run(config)
+2025-09-24T15:17:33.851474893Z [err]             ^^^^^^^^^^^
+2025-09-24T15:17:33.851480145Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/run.py", line 39, in run
+2025-09-24T15:17:33.851484849Z [err]      sockets = config.create_sockets()
+2025-09-24T15:17:33.851489998Z [err]                ^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:33.851495084Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 206, in create_sockets
+2025-09-24T15:17:33.851502654Z [err]      insecure_sockets = self._create_sockets(self.bind)
+2025-09-24T15:17:33.851508483Z [err]                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-24T15:17:33.851513997Z [err]    File "/usr/local/lib/python3.11/site-packages/hypercorn/config.py", line 273, in _create_sockets
+2025-09-24T15:17:33.851521381Z [err]      sock.bind(binding)
+2025-09-24T15:17:33.851527914Z [err]  socket.gaierror: [Errno -2] Name or service not known
