@@ -1,0 +1,13 @@
+[project]
+name = "fastapi-ollama-tinyllama"
+version = "0.1.0"
+description = "FastAPI server with Ollama integration for TinyLlama model"
+authors = ["Your Name <you@example.com>"]
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn[standard]>=0.24.0",
+    "requests>=2.31.0",
+    "pydantic>=2.0.0",
+    "httpx>=0.25.0"
+]
