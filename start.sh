@@ -1,9 +1,15 @@
 
 #!/bin/bash
 
-# Railway startup script with proper port handling
-# Set default port if PORT environment variable is not set
-PORT=${PORT:-5000}
+# Railway startup script
+echo "Starting FastAPI server..."
+echo "PORT environment variable: $PORT"
 
-echo "Starting FastAPI server on port $PORT"
-uvicorn main:app --host 0.0.0.0 --port $PORT
+# Use Python to handle the port variable properly
+python3 -c "
+import os
+import subprocess
+port = os.environ.get('PORT', '5000')
+print(f'Starting server on port {port}')
+subprocess.run(['uvicorn', 'main:app', '--host', '0.0.0.0', '--port', port])
+"

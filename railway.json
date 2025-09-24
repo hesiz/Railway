@@ -13,8 +13,7 @@
     "production": {
       "variables": {
         "PYTHONUNBUFFERED": "1",
-        "PYTHONDONTWRITEBYTECODE": "1",
-        "PORT": "8000"
+        "PYTHONDONTWRITEBYTECODE": "1"
       }
     }
   }
