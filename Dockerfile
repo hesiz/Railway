@@ -13,7 +13,8 @@ FROM python:3.11-slim
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
-    PIP_DISABLE_PIP_VERSION_CHECK=1
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PORT=5000
 
 # Set working directory
 WORKDIR /app
@@ -29,11 +30,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy project files
+COPY requirements.txt ./
 COPY pyproject.toml ./
 COPY main.py ./
 
-# Install Python dependencies using pip (since we're in Docker, we'll use pip directly)
-RUN pip install fastapi uvicorn requests pydantic httpx
+# Install Python dependencies from requirements.txt (includes hypercorn for Railway)
+RUN pip install -r requirements.txt
 
 # Install Ollama
 # Download and install Ollama using the official install script
@@ -81,21 +83,27 @@ else\n\
     echo "TinyLlama model already available"\n\
 fi\n\
 \n\
-# Start FastAPI server\n\
-echo "Starting FastAPI server on port 5000..."\n\
-uvicorn main:app --host 0.0.0.0 --port 5000\n\
+# Start FastAPI server with dynamic port support\n\
+echo "Starting FastAPI server on port $PORT..."\n\
+if command -v hypercorn >/dev/null 2>&1; then\n\
+    echo "Using Hypercorn for production deployment"\n\
+    hypercorn main:app --bind 0.0.0.0:$PORT --workers 1\n\
+else\n\
+    echo "Using Uvicorn for local development"\n\
+    uvicorn main:app --host 0.0.0.0 --port $PORT\n\
+fi\n\
 \n\
 # Cleanup on exit\n\
 kill $OLLAMA_PID 2>/dev/null || true' > /app/production_start.sh
 
 RUN chmod +x /app/production_start.sh
 
-# Expose port 5000 (required for Replit environment)
+# Expose port dynamically (supports Railway, Heroku, Render, etc.)
 EXPOSE 5000
 
 # Health check to verify the container is working
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:5000/health || exit 1
+    CMD curl -f http://localhost:$PORT/health || exit 1
 
 # Set default command to run the production startup script
 CMD ["/app/production_start.sh"]

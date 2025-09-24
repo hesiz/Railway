@@ -556,18 +556,36 @@ async def general_exception_handler(request, exc):
 if __name__ == "__main__":
     import uvicorn
     
-    print("Starting FastAPI Ollama TinyLlama Server...")
-    print("Server will be available at: http://0.0.0.0:5000")
-    print("API Documentation: http://0.0.0.0:5000/docs")
-    print("Health Check: http://0.0.0.0:5000/health")
-    print("Chat Endpoint: POST http://0.0.0.0:5000/chat")
+    # Get port from environment variable (Railway, Heroku, etc.) or use 5000 as default (Replit)
+    port = int(os.environ.get("PORT", 5000))
     
-    # Run the server on port 5000 (required for Replit)
-    # Note: We use port 5000 instead of 8000 because Replit requires this port
+    # Determine if we're in production mode based on hosting platform environment variables
+    is_production = (
+        os.environ.get("RAILWAY_ENVIRONMENT_NAME") or 
+        os.environ.get("HEROKU_APP_NAME") or 
+        os.environ.get("RENDER_SERVICE_NAME") or
+        os.environ.get("FLY_APP_NAME") or
+        os.environ.get("VERCEL_ENV") or
+        os.environ.get("NODE_ENV") == "production"
+    )
+    
+    print("Starting FastAPI Ollama TinyLlama Server...")
+    print(f"Server will be available at: http://0.0.0.0:{port}")
+    print(f"API Documentation: http://0.0.0.0:{port}/docs")
+    print(f"Health Check: http://0.0.0.0:{port}/health")
+    print(f"Chat Endpoint: POST http://0.0.0.0:{port}/chat")
+    
+    if is_production:
+        print("Running in production mode (detected external hosting platform)")
+    else:
+        print("Running in development mode (Replit environment)")
+    
+    # Run the server with dynamic port support for various hosting platforms
+    # Port 5000 is used by default for Replit, but dynamic PORT env var for others
     uvicorn.run(
         "main:app",
         host="0.0.0.0",
-        port=5000,
-        reload=True,
+        port=port,
+        reload=not is_production,  # Disable reload in production for better performance
         log_level="info"
     )

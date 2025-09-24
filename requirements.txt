@@ -1,14 +1,14 @@
 # FastAPI Ollama TinyLlama Server Dependencies
 # ==============================================
 # This file lists all Python dependencies required for the project
-# Even though we use pyproject.toml, this requirements.txt is provided
-# for compatibility and easy installation with pip
+# Compatible with Railway, Heroku, Render, and other hosting platforms
 
 # FastAPI framework for building the REST API
 fastapi>=0.104.1
 
-# ASGI server for running FastAPI applications
+# ASGI servers for running FastAPI applications
 uvicorn[standard]>=0.24.0
+hypercorn>=0.14.0
 
 # HTTP client library for making requests to Ollama API
 requests>=2.31.0
@@ -22,8 +22,3 @@ httpx>=0.25.0
 # Additional dependencies that may be useful:
 # python-multipart  # For handling form data (if needed)
 # python-dotenv     # For loading environment variables from .env files
-fastapi
-httpx
-pydantic
-requests
-uvicorn
