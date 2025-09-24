@@ -6,9 +6,8 @@
 # FastAPI framework for building the REST API
 fastapi>=0.104.1
 
-# ASGI servers for running FastAPI applications
+# ASGI server for running FastAPI applications
 uvicorn[standard]>=0.24.0
-hypercorn>=0.14.0
 
 # HTTP client library for making requests to Ollama API
 requests>=2.31.0
