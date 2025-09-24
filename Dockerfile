@@ -27,17 +27,6 @@ COPY requirements.txt main.py ./
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create optimized startup script that downloads Ollama at runtime
-RUN echo '#!/bin/bash\n\
-set -e\n\
-\n\
-echo "Starting FastAPI Ollama TinyLlama Server..."\n\
-echo "Note: Ollama will be downloaded on first run to minimize image size"\n\
-\n\
-# Start FastAPI server directly\n\
-# Ollama installation and model download happens at runtime via the app\n\
-exec python main.py' > /app/start.sh && chmod +x /app/start.sh
-
 # Expose port
 EXPOSE $PORT
 
@@ -45,8 +34,8 @@ EXPOSE $PORT
 HEALTHCHECK --interval=60s --timeout=30s --start-period=120s --retries=3 \
     CMD curl -f http://localhost:$PORT/health || exit 1
 
-# Use optimized startup script
-CMD ["/app/start.sh"]
+# Use uvicorn directly with proper Railway configuration
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
 
 # Labels
 LABEL maintainer="Railway Deployment" \
